@@ -9,6 +9,7 @@ const EditEmployee = () => {
    let {memberID} = useParams();
    const filterData = employeeData.filter((dataParam) => dataParam.id === Number(memberID));
   const [employeeObj, updateEmployeeObj] = useState(filterData[0]);
+  console.log(employeeData);
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const handleClick = () => {
@@ -24,13 +25,18 @@ const deleteHandler = () => {
   navigate('/home');
 };
 
+const goToHome = () => {
+
+  navigate("/home");
+}
+
 
   return (
     <div className = "m-5">
       <div>
       <h1> Edit a team member </h1>
       <h3 style={{ color: "grey" }}> Edit contact info, location and role. </h3>
-      <Link to = "/home"><button className = "position-absolute top-0 end-0"><i class="bi bi-x"></i></button></Link>
+     <button className = "position-absolute top-0 end-0" onClick = {goToHome}><i class="bi bi-x"></i></button>
       </div>
 
       <hr></hr>
@@ -51,16 +57,15 @@ const deleteHandler = () => {
 
       <div>
       <label htmlFor="regular"> Regular - Cant delete members</label>&nbsp;&nbsp;&nbsp;&nbsp;
-      <input type="radio" id="regular" value={employeeObj.role} onChange={(event)=>{updateEmployeeObj((prevState)=>{return {...prevState, role: event.target.value}}); }} /><br /><br />
+      <input type="radio" id="regular" name = "role" checked = {employeeObj.role !== 'admin' ? 'checked' : ''} onClick={(event)=>{updateEmployeeObj((prevState)=>{return {...prevState, role: ''}}); console.log(employeeObj) }} /><br /><br />
       </div>
       <hr></hr>
 
       <div>
       <label htmlFor="admin"> Admin - Can delete members</label>&nbsp;&nbsp;&nbsp;&nbsp;
-      <input type="radio" id="admin" value={employeeObj.role} onChange={(event)=>{updateEmployeeObj((prevState)=>{return {...prevState, role: event.target.value}}); }}  /><br /><br />
+      <input type="radio" id="admin"  name = "role" checked = {employeeObj.role === 'admin' ? 'checked' : ''} onClick={(event)=>{updateEmployeeObj((prevState)=>{return {...prevState, role: 'admin'}}); console.log(employeeObj) }}  /><br /><br />
       </div>
       <hr></hr> 
-      { employeeObj.role === "admin" &&
         <div
           className="btn wd-rounded-buttons float-right"
           style={{
@@ -69,7 +74,7 @@ const deleteHandler = () => {
           }} onClick = {deleteHandler}
         >
           Delete
-        </div>}
+        </div>
       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
     

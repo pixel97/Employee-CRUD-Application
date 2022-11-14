@@ -1,5 +1,6 @@
 import React, {useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
+import { useNavigate } from "react-router-dom";
 import EditEmployee from "../edit-employee";
 
 
@@ -17,7 +18,10 @@ const EmployeeComponent = (
 }
 
 ) => {
- const dispatch = useDispatch();
+ const navigate = useNavigate();
+ const EditUser = (id) => {
+    navigate("/edit/"+id);
+ }
 return (
 <>
 
@@ -28,6 +32,7 @@ return (
            <img src = {e.profilePicture} style = {{borderRadius:"50%", height:"50px", width:"50px"}} className = "center-block"/>
        </div>
         <div className ="col-xxl-10 col-xl-10 col-lg-11 col-md-10 col-sm-10">
+                   <span><button onClick = {() => {EditUser(e.id)}}>Edit</button></span>
                    <p> {e.firstName} {e.lastName} {e.role && <span>({e.role})</span>} </p>
                   <p style = {{color:"grey"}}> {e.contactNumber} </p>
                   <p style = {{color:"grey"}}> {e.email} </p>
