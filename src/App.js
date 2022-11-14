@@ -1,24 +1,27 @@
 import logo from './logo.svg';
 import './App.css';
+import {BrowserRouter} from "react-router-dom";
+import {Routes, Route} from "react-router";
+import Employee from "./employee"
+import AddEmployee from "./employee/new-employee"
+import EditEmployee from "./employee/edit-employee"
+import employeeReducer from './employee/reducer/employee-reducer';
+import { configureStore } from '@reduxjs/toolkit';
+import { Provider } from 'react-redux';
 
 function App() {
+const store = configureStore({reducer: {employee: employeeReducer}});
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Provider store={store}>
+     <BrowserRouter>
+       <Routes>
+       <Route path="/edit/:memberID"  element={<EditEmployee/>}/>
+      <Route path="/*" element={<Employee/>}/>
+      <Route path="/add" element={<AddEmployee/>}/>
+
+      </Routes>
+     </BrowserRouter>
+     </Provider>
   );
 }
 

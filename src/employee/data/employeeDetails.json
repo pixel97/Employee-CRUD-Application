@@ -1,0 +1,39 @@
+[
+  {
+    "id": 100,
+    "firstName": "Adrien",
+    "lastName": "Olczak",
+    "role": "admin",
+    "contactNumber": "4153101619",
+    "email": "adrien@instawork.com",
+    "profilePicture": "images/user1.png"
+  },
+  {
+    "id": 101,
+    "firstName": "Charlene",
+    "lastName": "Pham",
+    "role": "",
+    "contactNumber": "4153101619",
+    "email": "charlene@instawork.com",
+    "profilePicture": "images/user2.png"
+  },
+  {
+    "id": 102,
+    "firstName": "Benson",
+    "lastName": "Mach",
+    "role": "",
+    "contactNumber": "4153101619",
+    "email": "benson@instawork.com",
+    "profilePicture": "images/user3.jpg"
+  },
+
+  {
+    "id": 103,
+    "firstName": "Dan",
+    "lastName": "Petrie",
+    "role": "",
+    "contactNumber": "4153101619",
+    "email": "dan@instawork.com",
+    "profilePicture": "images/user4.webp"
+  }
+]
